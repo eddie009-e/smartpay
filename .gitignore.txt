@@ -1,0 +1,10 @@
+# Ignore the backend folder
+smartpay-backend/
+
+# Ignore build and IDE files
+*.iml
+.gradle/
+build/
+.idea/
+local.properties
+.DS_Store

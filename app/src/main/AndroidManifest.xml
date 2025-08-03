@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.smartpay.android">
+
+    <!-- 🌐 NETWORK: Essential for API communication -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 📸 CAMERA: Required for QR code scanning (payment app core feature) -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    
+    <!-- 📱 DEVICE: Vibration for user feedback -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!-- 🔐 SECURITY: Biometric authentication -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    
+    <!-- 💾 STORAGE: Limited external storage for receipt sharing only -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+        
+    <!-- 🔒 SECURITY: Wake lock for session management -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- 📱 ميزات الأجهزة -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+
+    <application
+        android:name=".SmartPayApplication"
+        android:usesCleartextTraffic="false"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SmartPay"
+        android:requestLegacyExternalStorage="false"
+        android:hardwareAccelerated="true"
+        android:largeHeap="false"
+        android:extractNativeLibs="false"
+        tools:targetApi="31">
+
+        <activity android:name=".IncomingRequestsActivity" android:exported="false" />
+
+        <!-- 📱 نشاط الباركود مع إعدادات محسّنة -->
+        <activity
+            android:name=".QRCodeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SmartPay"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:hardwareAccelerated="true" />
+
+        <!-- 📱 نشاط الباركود الثابت - الذي كان مفقوداً -->
+        <activity
+            android:name=".FixedQrCodeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SmartPay"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:hardwareAccelerated="true" />
+
+        <activity
+            android:name=".IntroActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SmartPay">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".RegisterBusinessActivity" android:exported="false" />
+        <activity android:name=".UserTypeSelectionActivity" android:exported="false" />
+        <activity android:name=".UserInfoFormActivity" android:exported="false" />
+        <activity android:name=".LoginActivity" android:exported="false" />
+        <activity android:name=".RegisterActivity" android:exported="false" />
+        <activity android:name=".SetPinActivity" android:exported="false" />
+        <activity android:name=".PinActivity" android:exported="false" />
+        <activity android:name=".DashboardActivity" android:exported="false" />
+
+        <!-- ✅ تمت إضافة النشاط المفقود -->
+        <activity android:name=".BusinessDashboardActivity" android:exported="false" />
+        <activity android:name=".SalariesActivity" android:exported="false" />
+        <activity android:name=".RequestPaymentActivity" />
+
+        <activity android:name=".SendMoneyActivity" android:exported="false" />
+        <activity android:name=".SettingsActivity" android:exported="false" />
+        <activity android:name=".ReceiptActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".MerchantSendMoneyActivity" />
+        <activity android:name=".WalletActivity" />
+
+        <!-- 🧾 صفحة فواتير المستلمة للتاجر -->
+        <activity android:name=".ReceivedInvoicesActivity" android:exported="false" />
+        
+        <!-- 🧪 Test crash activity for AI Security Agent testing -->
+        <activity 
+            android:name=".crash.TestCrashActivity" 
+            android:exported="false"
+            android:label="Crash Test (Debug Only)" />
+            
+        <!-- 📊 Enhanced transaction history with new API -->
+        <activity 
+            android:name=".EnhancedTransactionHistoryActivity" 
+            android:exported="false"
+            android:label="Transaction History" />
+            
+        <!-- 🎨 Modern UI Activities -->
+        <activity 
+            android:name=".ModernDashboardActivity" 
+            android:exported="false"
+            android:label="الشاشة الرئيسية" />
+            
+        <activity 
+            android:name=".ModernLoginActivity" 
+            android:exported="false"
+            android:label="تسجيل الدخول" />
+            
+        <activity 
+            android:name=".ModernSendMoneyActivity" 
+            android:exported="false"
+            android:label="إرسال الأموال" />
+
+        <!-- 📂 مزود الملفات لمشاركة الصور -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+</manifest>

@@ -1,0 +1,78 @@
+<resources>
+    <!-- SmartPay Modern Theme -->
+    <style name="Theme.SmartPay" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/primary_green</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimaryContainer">@color/background_secondary</item>
+        <item name="colorOnPrimaryContainer">@color/primary_dark</item>
+        
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/primary_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/gray_light</item>
+        <item name="colorOnSecondaryContainer">@color/white</item>
+        
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/background_light</item>
+        <item name="colorOnBackground">@color/primary_dark</item>
+        <item name="colorSurface">@color/surface_elevated</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        
+        <!-- Window properties -->
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:navigationBarColor">@color/background_light</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        
+        <!-- Custom attributes -->
+        <item name="colorError">@color/error_red</item>
+        <item name="colorOutline">@color/outline</item>
+    </style>
+
+    <!-- SmartPay Button Styles -->
+    <style name="SmartPay.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/primary_button_bg</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:elevation">12dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    
+    <style name="SmartPay.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:background">@drawable/request_button_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:elevation">12dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <!-- SmartPay Card Style -->
+    <style name="SmartPay.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">24dp</item>
+        <item name="cardElevation">16dp</item>
+        <item name="cardBackgroundColor">@color/white_transparent_60</item>
+    </style>
+
+    <!-- SmartPay Text Styles -->
+    <style name="SmartPay.Text.Headline" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">@color/primary_dark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/beiruti_regular</item>
+    </style>
+    
+    <style name="SmartPay.Text.Title" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/primary_dark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/beiruti_regular</item>
+    </style>
+    
+    <style name="SmartPay.Text.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/on_surface_variant</item>
+        <item name="fontFamily">@font/beiruti_regular</item>
+    </style>
+</resources>
